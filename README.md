@@ -2,6 +2,9 @@
 
 This is the backend service for the Todo-List App. It provides the REST API for managing tasks and uses Prisma ORM with a MySQL database.
 
+## Hosted 
+This application is hosted at the following url - [https://jagroops-todo-list.vercel.app/](https://jagroops-todo-list.vercel.app/)
+
 ## Features
 
 *   RESTful API endpoints for CRUD operations
