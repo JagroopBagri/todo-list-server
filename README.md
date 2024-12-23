@@ -20,7 +20,7 @@ This is the backend service for the Todo-List App. It provides the REST API for 
 
 ```
 
-git clone <repository-url>
+git clone https://github.com/JagroopBagri/todo-list-server.git
 
 cd <server-directory>
   
