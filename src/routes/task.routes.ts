@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import prisma from "../prisma";
+import { createTaskSchema, updateTaskSchema, validateSchema } from "../validations/taskValidation";
 
 const router = Router();
 
@@ -54,7 +55,7 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
  * Returns the newly created task as a JSON object or an error message if the operation fails.
  * Responds with a 400 status code if the required fields are missing.
  */
-router.post("/", async (req: Request, res: Response): Promise<void> => {
+router.post("/", validateSchema(createTaskSchema),async (req: Request, res: Response): Promise<void> => {
   const { title, color } = req.body;
   if (!title || !color) {
     res.status(400).json({ error: "Title and color are required." });
@@ -79,7 +80,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
  * Returns the updated task as a JSON object or an error message if the operation fails.
  * Responds with a 500 status code if the update fails.
  */
-router.put("/:id", async (req: Request, res: Response) => {
+router.put("/:id", validateSchema(updateTaskSchema), async (req: Request, res: Response) => {
   const { id } = req.params;
   const { title, color, completed } = req.body;
 
